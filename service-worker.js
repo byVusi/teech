@@ -2,14 +2,23 @@
 const CACHE_NAME = 'pwa-cache-v1';
 const API_CACHE = 'api-cache-v1';
 
-// Files to cache (update this list later)
-const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/main.css',
-    '/main.js',
-    '/assets/media/icons/favicon/favicon.ico'
-];
+self.addEventListener('install', async (event) => {
+    const cache = await caches.open('pwa-cache-v1');
+    
+    // Get the service worker's scope (base path)
+    const scope = self.registration.scope;
+    const basePath = new URL(scope).pathname; // This will be '/teech/' on GitHub Pages
+
+    const STATIC_ASSETS = [
+        '',
+        'index.html',
+        'main.css',
+        'main.js',
+        'assets/media/icons/favicon/favicon.ico'
+    ].map(path => basePath + path); // Prepend base path to each asset
+
+    event.waitUntil(cache.addAll(STATIC_ASSETS));
+});
 
 // Install event - Cache static assets
 self.addEventListener('install', event => {
