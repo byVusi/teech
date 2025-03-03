@@ -78,10 +78,14 @@ export class Validator {
         if (!this.isValidObject(value)) {
             throw new TypeError("Invalid object. Must be a valid object.");
         }
-        
+
         if(!isEmpty && !this.isNonEmptyObject(value)) {
             throw new TypeError('Invalid object. Must be a non-empty object.');
         }
         return value;
+    }
+
+    static isValidFunction(value) {
+        return typeof value === 'function';
     }
 } 
