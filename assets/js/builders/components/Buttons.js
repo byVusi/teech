@@ -29,7 +29,11 @@ export function createButton(text = 'Button', options = {}, icon = {}, isOutline
     const button = createNewElement('button', {text: text, ...options});
 
     // Apply outline if needed
-    if(isOutline) button.classList.add('outline');
+    if(isOutline) {
+        button.classList.add('btn-outline');
+    } else {
+        button.classList.add('btn');
+    }
 
     // Check for a valid icon object
     if(!Validator.isNonEmptyObject(icon) || !Validator.isNonEmptyString(icon.name)) { 
