@@ -65,6 +65,3 @@ export function createButton(text = 'Button', options = {}, icon = {}, isOutline
     
     return button;
 }
-
-   
-
