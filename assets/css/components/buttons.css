@@ -9,7 +9,7 @@ input[type="button"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5em;
+    gap: 0.8em;
     padding: 0.5em 1em;
     margin-top: 0.5em;
     margin-left: 0.5em;
@@ -373,3 +373,4 @@ input[type="reset"]:active,
 .btn-outline-dark:focus {
     outline: none;
 }
+
