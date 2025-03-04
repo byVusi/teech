@@ -14,3 +14,17 @@ body {
     font-size: 1rem;
     line-height: 1.5;
 }
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--light);
+        color: var(--dark);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--dark);
+        color: var(--light);
+    }
+}
