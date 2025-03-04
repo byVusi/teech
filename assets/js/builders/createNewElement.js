@@ -59,11 +59,11 @@ export function createNewElement(tagName, options = {}) {
 
     // Add event listeners
     if(Validator.isNonEmptyObject(options.events)) {
-        Object.entries(options.events).forEach(([event, handler]) => {
-            if(!Validator.isNonEmptyString(event) && Validator.isValidFunction(handler)) {
+        Object.entries(options.events).forEach(([event, handler]) => {         
+            if(Validator.isNonEmptyString(event) && Validator.isValidFunction(handler)) {
                 element.addEventListener(event, handler);
             } else {
-                console.error(`Event handler for "${event}" is not a function`);
+                console.error(`Event listener for "${event}" is invalid.`)
             }
         })
     }

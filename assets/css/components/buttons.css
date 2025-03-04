@@ -9,7 +9,7 @@ input[type="button"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.8em;
+    gap: 0.5em;
     padding: 0.5em 1em;
     margin-top: 0.5em;
     margin-left: 0.5em;
@@ -18,7 +18,6 @@ input[type="button"],
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* SOLID - States: Hover, Focus, Active & Disabled */
 button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
@@ -298,7 +297,6 @@ input[type="reset"]:active,
     color: var(--light);
 }
 
-/* OUTLINE - States: Hover, Focus & Disabled */
 .btn-outline-primary,
 .btn-outline-secondary,
 .btn-outline-success,
@@ -373,4 +371,3 @@ input[type="reset"]:active,
 .btn-outline-dark:focus {
     outline: none;
 }
-
