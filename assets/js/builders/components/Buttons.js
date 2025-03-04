@@ -40,12 +40,16 @@ export function createButton(text = 'Button', options = {}, icon = {}, isOutline
         return button;
     }
     
-    const iconElement = createNewElement('i', {
-        text: icon.name.toLowerCase().trim(), 
-        attributes: {class: icon.class || 'material-icons' }
-    });
+    const iconElement = createNewElement(
+        'i', 
+        {
+            text: icon.name.toLowerCase().trim(), 
+            attributes: {
+                class: icon.class || 'material-icons' 
+            }
+        }
+    );
 
-   
     // Check for a valid icon size
     if(Validator.isNonEmptyString(icon.size)) {
         switch(icon.size.toLowerCase().trim()) {

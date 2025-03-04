@@ -88,4 +88,22 @@ export class Validator {
     static isValidFunction(value) {
         return typeof value === 'function';
     }
+
+    static isValidHTMLElement(value) {
+
+        const allowedTagNames = [
+            'div', 'span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'button', 'input', 
+            'label', 'select', 'option', 'optgroup', 'textarea', 'form', 'fieldset', 'legend', 
+            'datalist', 'ul', 'li', 'img', 'video', 'audio', 'source', 'track', 'iframe', 
+            'nav', 'header', 'footer', 'section', 'article', 'aside', 'main', 'figure', 
+            'figcaption', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'caption', 'col', 
+            'colgroup', 'details', 'summary', 'dialog', 'menu', 'menuitem', 'meter', 'progress', 
+            'blockquote', 'cite', 'code', 'pre', 'em', 'strong', 'small', 'sub', 'sup', 'del', 
+            'ins', 'mark', 'abbr', 'address', 'b', 'i', 'u', 's', 'time', 'var', 'kbd', 'samp', 
+            'q', 'dfn', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'wbr', 'br', 'hr', 'script', 'style', 
+            'link', 'meta', 'title', 'base', 'head', 'body', 'html', 'noscript', 'template', 
+            'slot', 'picture', 'embed', 'object', 'param', 'output'
+          ]; 
+        return value instanceof HTMLElement || allowedTagNames.includes(value.toLowerCase().trim());
+    }
 } 

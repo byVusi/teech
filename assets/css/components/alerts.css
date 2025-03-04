@@ -1,0 +1,103 @@
+.alert {
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    width: calc(100vw - 1rem);
+    max-width: 80rem;
+    margin: 0.5em auto;
+    padding: 1em;
+}
+
+.alert-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.alert-body {
+    font-size: 1rem;
+}
+
+.alert-primary {
+    background-color: var(--primary-200);
+    color: var(--primary-700);
+}
+
+.alert-secondary {
+    background-color: var(--secondary-200);
+    color: var(--secondary-800);
+}   
+
+.alert-success {
+    background-color: var(--success-200);
+    color: var(--success-700);
+}   
+
+.alert-danger {
+    background-color: var(--danger-100);
+    color: var(--danger-700);
+}
+
+.alert-warning {
+    background-color: var(--warning-200);
+    color: var(--warning-700);
+}   
+
+.alert-info {
+    background-color: var(--info-200);
+    color: var(--info-700);
+}
+
+.alert-light {
+    background-color: var(--light);
+    color: var(--dark);
+}   
+
+.alert-dark {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+@media (prefers-color-scheme: dark) {
+    .alert-primary {
+        background-color: var(--primary-900);
+        color: var(--primary-500);
+    }
+
+    .alert-secondary {
+        background-color: var(--secondary-900);
+        color: var(--secondary-500);
+    }   
+
+    .alert-success {
+        background-color: var(--success-900);
+        color: var(--success-600);
+    }   
+
+    .alert-danger {
+        background-color: var(--danger-900);
+        color: var(--danger-500);
+    }
+
+    .alert-warning {
+        background-color: var(--warning-900);
+        color: var(--warning-600);
+    }   
+
+    .alert-info {
+        background-color: var(--info-900);
+        color: var(--info-600);
+    }
+
+    .alert-light {
+        background-color: var(--light);
+        color: var(--dark);
+    }   
+
+    .alert-dark {
+        background-color: var(--dark);
+        color: var(--light);
+    }
+}
