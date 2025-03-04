@@ -1,10 +1,10 @@
 // Define cache names
-const CACHE_NAME = 'pwa-cache-v1';
+const CACHE_NAME = 'pwa-cache-v2'; // Updated cache name to trigger updates
 const API_CACHE = 'api-cache-v1';
 const STATIC_ASSETS = [];
 
 self.addEventListener('install', async (event) => {
-    const cache = await caches.open('pwa-cache-v1');
+    const cache = await caches.open(CACHE_NAME);
     
     // Get the service worker's scope (base path)
     const scope = self.registration.scope;
@@ -18,6 +18,7 @@ self.addEventListener('install', async (event) => {
     STATIC_ASSETS.map(path => basePath + path); // Prepend base path to each asset
 
     event.waitUntil(cache.addAll(STATIC_ASSETS));
+    self.skipWaiting(); // Force immediate activation
 });
 
 // Install event - Cache static assets
@@ -30,7 +31,7 @@ self.addEventListener('install', event => {
     );
 });
 
-// Activate event - Clean up old caches
+// Activate event - Clean up old caches and claim clients
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(keys => {
@@ -44,6 +45,7 @@ self.addEventListener('activate', event => {
             );
         })
     );
+    self.clients.claim(); // Take control of open clients immediately
 });
 
 // Fetch event - Cache strategy
@@ -92,7 +94,7 @@ self.addEventListener('sync', event => {
     }
 });
 
-// Notify user when an update is available
+// Notify user when an update is available and apply updates immediately
 self.addEventListener('message', event => {
     if (event.data === 'update-sw') {
         self.skipWaiting();
