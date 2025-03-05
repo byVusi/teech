@@ -28,7 +28,7 @@ import { Validator } from './assets/js/classes/Validator.js';
 // Show a notification when a new update is available
 function showUpdateNotification(worker) {
     const updateBanner = document.createElement('div');
-    updateBanner.append(updateBanner());
+    updateBanner.append(createUpdateBanner());
     document.body.appendChild(updateBanner);
 
     document.getElementById('refresh').addEventListener('click', () => {
@@ -36,7 +36,7 @@ function showUpdateNotification(worker) {
         window.location.reload(); // Reload to apply the new version
     });
 
-    function updateBanner(value = 'A new update is available!') {
+    function createUpdateBanner(value = 'A new update is available!') {
         const validatedText = Validator.isNonEmptyString(value) || 'A new update is available!';
         
         const banner = createNewElement(
@@ -79,4 +79,12 @@ function showUpdateNotification(worker) {
         return banner;
     }
 }
+
+import { createModal, createModalHeader, createModalBody, createModalFooter } from './assets/js/builders/components/Modals.js';
+
+document.body.append(createModal(
+    createModalHeader('Modal header'),
+    createModalBody('Modal body'),
+    createModalFooter('Modal footer', { attributes: { style: 'display: flex; justify-content: flex-end;' } })
+))
 
