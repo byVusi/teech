@@ -34,16 +34,16 @@ i.xxlarge {
     font-size: 3rem;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     body {
         background-color: var(--light) !important;
         color: var(--dark) !important;
     }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     body {
         background-color: var(--dark) !important;
         color: var(--light) !important;
     }
-}
+} */
