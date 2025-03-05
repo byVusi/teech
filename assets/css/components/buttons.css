@@ -31,7 +31,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus,
 .btn:focus {
-    outline-width: 0.25em;
+    outline-width: 0.25rem;
     outline-style: solid;
     outline-color: var(--secondary-300);
 }
