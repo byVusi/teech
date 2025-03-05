@@ -1,5 +1,5 @@
 // Define cache names
-const CACHE_NAME = 'pwa-cache-v1'; // Updated cache name to trigger updates
+const CACHE_NAME = 'pwa-cache-v2'; // Updated cache name to trigger updates
 const API_CACHE = 'api-cache-v1';
 const STATIC_ASSETS = [];
 
