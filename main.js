@@ -47,10 +47,11 @@ function showUpdateNotification(worker) {
                 attributes: {
                     style: `
                         width: 100%;
-                        max-width:fit-content;
+                        max-width: 30em;
                         display: inline-flex;
                         gap: 1em;
                         align-items: center;
+                        justify-content: space-between;
                         position: absolute;
                         bottom: 0.625em;
                         left: 50%;

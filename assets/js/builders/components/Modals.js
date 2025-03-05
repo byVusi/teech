@@ -37,7 +37,7 @@ export function createModalHeader( title = 'Modal title', options = {} ) {
 }
 
 export function createModalBody( content = '', options = {} ) {
-    if(!Validator.isValidHTMLElement(content)) {
+    if(content && !Validator.isString(content)) {
         console.error('Invalid content. Content must be a valid HTML element.');
         content = 'Modal body';
     }
