@@ -13,7 +13,7 @@ input[type="button"],
     padding: 0.5em 1em;
     margin-top: 0.5em;
     margin-left: 0.5em;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -305,7 +305,7 @@ input[type="reset"]:active,
 .btn-outline-info,
 .btn-outline-light,
 .btn-outline-dark {
-    border-width: 0.125em;
+    border-width: 0.125rem;
     border-style: solid;
 }
 
