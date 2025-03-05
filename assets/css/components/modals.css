@@ -86,9 +86,24 @@
     outline-color: var(--primary-200);
 }
 
-@media (prefers-color-scheme: light) {
-    .modal {
-        background-color: inherit;
-        color: inherit;
+@media (prefers-color-scheme: dark) {
+    .modal,
+    .modal-header,
+    .modal-footer {
+        border-color: var(--secondary-500);
     }
+
+    .modal {
+        background-color: var(--secondary-800);
+        color: var(--light);
+    }
+
+    .modal-overlay {
+       opacity: 0.9;
+    }
+
+    .close-button {
+        color: var(--secondary-500);
+    }   
+
 }

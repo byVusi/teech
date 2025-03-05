@@ -371,7 +371,7 @@ input[type="reset"]:active,
 .btn-outline-dark:focus {
     outline: none;
 }
-/* 
+
 @media (prefers-color-scheme: dark) {
     button:disabled,
     input[type="submit"]:disabled,
@@ -624,4 +624,4 @@ input[type="reset"]:active,
         border-color: var(--dark);
         color: var(--dark);
     }
-} */
+}
