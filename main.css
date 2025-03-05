@@ -9,9 +9,15 @@
     box-sizing: border-box;
 }
 
-.wrapper {
-    width: calc(100vw - 1em);
-    margin: 0 auto;
+body {
+    width: 100%;
+    height: auto;
+}
+
+.wrapper {   
+    position: relative;
+    width: 100%;
+    padding: 0 0.5em;
 }
 
 i.small {
@@ -41,9 +47,9 @@ i.xxlarge {
     }
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     body {
         background-color: var(--dark) !important;
         color: var(--light) !important;
     }
-} */
+}

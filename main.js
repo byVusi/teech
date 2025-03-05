@@ -84,7 +84,7 @@ import { createModal, createModalHeader, createModalBody, createModalFooter } fr
 import { handleModalCloseClick } from './assets/js/handlers/clickHandlers.js';
 
 
-document.body.append(createModal(
+document.querySelector('.wrapper').append(createModal(
     createModalHeader('Modal header'),
     createModalBody('Modal body'),
     createModalFooter([createButton('Cancel', {attributes: {class: 'btn-secondary'}, events: {'click': handleModalCloseClick} }), createButton('Save changes', {attributes: {class: 'btn-primary'}})], { attributes: { style: 'display: flex; justify-content: flex-end;' } })

@@ -1,17 +1,17 @@
 .modal-overlay {
     width: 100vw;
     height: 100vh;
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 8888;
-    background-color: var(--secondary-400);
-    opacity: 0.2;
+    background-color: var(--dark);
+    opacity: 0.5;
 }
 
 .modal {
     width: calc(100vw - 1em);
-    max-width: 40em;
+    max-width: 30em;
     height: auto;
     margin: auto;
     position: absolute;
@@ -21,12 +21,17 @@
     display: flex;
     flex-flow: column nowrap;
     border-radius: 0.5em;  
-    background-color: inherit;
+    
     z-index: 9999;
 }
 
 .modal {
     border-style: solid;
+    
+}
+
+.modal {
+    background-color: var(--light);
     border-color: var(--secondary-300);
 }
 
@@ -81,9 +86,24 @@
     outline-color: var(--primary-200);
 }
 
-@media (prefers-color-scheme: light) {
-    .modal {
-        background-color: inherit;
-        color: inherit;
+@media (prefers-color-scheme: dark) {
+    .modal,
+    .modal-header,
+    .modal-footer {
+        border-color: var(--secondary-500);
     }
+
+    .modal {
+        background-color: var(--secondary-800);
+        color: var(--light);
+    }
+
+    .modal-overlay {
+       opacity: 0.9;
+    }
+
+    .close-button {
+        color: var(--secondary-500);
+    }   
+
 }
