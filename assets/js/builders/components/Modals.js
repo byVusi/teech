@@ -11,7 +11,9 @@ export function createModal(header = 'Modal header', body = '', footer = '', opt
     if(Validator.isValidHTMLElement(footer)) modal.append(footer);
 
     const overlay = createModalOverlay();
-    document.body.append(overlay);
+    const bodyElement = document.body;
+    bodyElement.style.overflow = 'hidden';
+    bodyElement.append(overlay);
     return modal;
 }
 
