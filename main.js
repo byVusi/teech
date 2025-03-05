@@ -27,8 +27,9 @@ import { Validator } from './assets/js/classes/Validator.js';
 
 // Show a notification when a new update is available
 function showUpdateNotification(worker) {
-    const updateBanner = document.createElement('div');
-    updateBanner.append(createUpdateBanner());
+    const updateBanner = createUpdateBanner();
+
+    // updateBanner.append(createUpdateBanner());
     document.body.appendChild(updateBanner);
 
     document.getElementById('refresh').addEventListener('click', () => {
@@ -36,8 +37,8 @@ function showUpdateNotification(worker) {
         window.location.reload(); // Reload to apply the new version
     });
 
-    function createUpdateBanner(value = 'A new update is available!') {
-        const validatedText = Validator.isNonEmptyString(value) || 'A new update is available!';
+    function createUpdateBanner() {
+        const validatedText =  'A new update is available!';
         
         const banner = createNewElement(
             'div',
@@ -45,12 +46,18 @@ function showUpdateNotification(worker) {
                 text: validatedText,
                 attributes: {
                     style: `
-                        position: fixed;
+                        width: 100%;
+                        max-width:fit-content;
+                        display: inline-flex;
+                        gap: 1em;
+                        align-items: center;
+                        position: absolute;
                         bottom: 0.625em;
                         left: 50%;
                         transform: translateX(-50%);
                         padding: 1em;
                         border-radius: 0.5em;
+                        z-index: 10000;
                     `
                 }
             }
@@ -59,17 +66,17 @@ function showUpdateNotification(worker) {
         const button = createButton('Update', {  attributes: { id: 'refresh' } }  );
 
         if(window.matchMedia('(prefers-color-scheme: light)').matches) {
-            banner.style = `
-                background-color: var(--dark);
-                color: var(--light);
-            `;
+            banner.style.backgroundColor = `var(--dark)`;
+            banner.style.color = `var(--light)`;
+
+            console.log('Light theme');
 
             button.classList.add('btn', 'btn-outline-light');
         } else {
-            banner.style = `
-                background-color: var(--light);
-                color: var(--dark);
-            `;
+            banner.style.backgroundColor = `var(--light)`;
+            banner.style.color = `var(--dark)`;
+
+            console.log('Dark theme');
 
             button.classList.add('btn', 'btn-outline-dark');
         }
