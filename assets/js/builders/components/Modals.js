@@ -1,5 +1,6 @@
 import { createNewElement } from "../createNewElement.js";
-import {createButton} from './Buttons.js'
+import {createButton} from './Buttons.js';
+import { handleModalCloseClick } from "../../handlers/clickHandlers.js";
 import { Validator } from "../../classes/Validator.js";
 
 export function createModal(header = 'Modal header', body = '', footer = '', options = {}) {
@@ -27,10 +28,7 @@ export function createModalHeader( title = 'Modal title', options = {} ) {
  
     const modalHeader = createNewElement('div', {text: title, attributes: { class: 'modal-header', ...options.attributes } });
 
-    const closeButton = createButton('', { attributes: { class: 'btn close-button' }, events: { 'click': ()=> {
-        document.querySelector('.modal').remove();
-        document.querySelector('.modal-overlay').remove();
-    } } }, { name: 'close', size: 'large'} );
+    const closeButton = createButton('', { attributes: { class: 'btn close-button' }, events: { 'click': handleModalCloseClick } }, { name: 'close', size: 'large'} );
 
     modalHeader.append(closeButton);
     return modalHeader;
@@ -53,8 +51,8 @@ export function createModalBody( content = '', options = {} ) {
     return modalBody;
 }
 
-export function createModalFooter(content, options = {}) {
-    if(!Validator.isValidHTMLElement(content)) {
+export function createModalFooter(content = ['Modal footer'], options = {}) {
+    if(!Validator.isValidHTMLElement(...content)) {
         console.error('Invalid content. Content must be a valid HTML element.');
         content = 'Modal footer';
     }
@@ -66,7 +64,7 @@ export function createModalFooter(content, options = {}) {
 
     const modalFooter = createNewElement('div', { attributes: { class: 'modal-footer', ...options.attributes } });
 
-    modalFooter.append(content);
+    modalFooter.append(...content);
     return modalFooter;
 }
 

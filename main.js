@@ -81,10 +81,12 @@ function showUpdateNotification(worker) {
 }
 
 import { createModal, createModalHeader, createModalBody, createModalFooter } from './assets/js/builders/components/Modals.js';
+import { handleModalCloseClick } from './assets/js/handlers/clickHandlers.js';
+
 
 document.body.append(createModal(
     createModalHeader('Modal header'),
     createModalBody('Modal body'),
-    createModalFooter('Modal footer', { attributes: { style: 'display: flex; justify-content: flex-end;' } })
+    createModalFooter([createButton('Cancel', {attributes: {class: 'btn-secondary'}, events: {'click': handleModalCloseClick} }), createButton('Save changes', {attributes: {class: 'btn-primary'}})], { attributes: { style: 'display: flex; justify-content: flex-end;' } })
 ))
 
