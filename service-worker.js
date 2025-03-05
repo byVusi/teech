@@ -1,35 +1,31 @@
 // Define cache names
-const CACHE_NAME = 'pwa-cache-v2'; // Updated cache name to trigger updates
+const CACHE_NAME = 'pwa-cache-v1'; // Updated cache name to trigger updates
 const API_CACHE = 'api-cache-v1';
-const STATIC_ASSETS = [];
 
-self.addEventListener('install', async (event) => {
-    const cache = await caches.open(CACHE_NAME);
-    
+self.addEventListener('install', event => {
     // Get the service worker's scope (base path)
     const scope = self.registration.scope;
     const basePath = new URL(scope).pathname; // This will be '/teech/' on GitHub Pages
 
-    STATIC_ASSETS.push('',
+    // Define static assets (avoid modifying global STATIC_ASSETS)
+    const staticAssets = [
+        '',
         'index.html',
         'main.css',
         'main.js',
-        'assets/media/icons/favicon/favicon.ico');
-    STATIC_ASSETS.map(path => basePath + path); // Prepend base path to each asset
+        'assets/media/icons/favicon/favicon.ico'
+    ].map(path => basePath + path); // Prepend base path to each asset
 
-    event.waitUntil(cache.addAll(STATIC_ASSETS));
-    self.skipWaiting(); // Force immediate activation
-});
-
-// Install event - Cache static assets
-self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => {
-            console.log('Caching static assets');
-            return cache.addAll(STATIC_ASSETS);
-        })
+        (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            console.log('Caching static assets:', staticAssets);
+            await cache.addAll(staticAssets);
+        })()
     );
+    self.skipWaiting();
 });
+
 
 // Activate event - Clean up old caches and claim clients
 self.addEventListener('activate', event => {
@@ -53,24 +49,35 @@ self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
     
     // API requests - Network first, fallback to cache
-    if (url.origin !== location.origin) {
+    if (url.origin !== location.origin && event.request.url.startsWith('http')) {
         event.respondWith(
-            fetch(event.request).then(response => {
-                return caches.open(API_CACHE).then(cache => {
-                    cache.put(event.request, response.clone());
-                    return response;
-                });
-            }).catch(() => caches.match(event.request))
+            fetch(event.request)
+                .then(response => {
+                    if (!response || response.status !== 200) {
+                        throw new Error('Network response invalid');
+                    }
+                    return caches.open(API_CACHE).then(cache => {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    });
+                })
+                .catch(() => caches.match(event.request)
+                    .then(response => response || new Response('Offline', { status: 503 }))
+                )
         );
         return;
     }
+    
 
     // Static files - Cache first, fallback to network
     event.respondWith(
         caches.match(event.request).then(response => {
-            return response || fetch(event.request);
+            return response || fetch(event.request).catch(() => {
+                return caches.match('/teech/index.html'); // Serve a fallback page when offline
+            });
         })
     );
+    
 });
 
 // Push notification event
@@ -95,8 +102,24 @@ self.addEventListener('sync', event => {
 });
 
 // Notify user when an update is available and apply updates immediately
-self.addEventListener('message', event => {
+self.addEventListener('message', async event => {
     if (event.data === 'update-sw') {
-        self.skipWaiting();
+        await self.skipWaiting();
+        const clients = await self.clients.matchAll({ type: 'window' });
+
+        if (clients.length === 0) {
+            console.warn("No active clients found to refresh.");
+            return;
+        }
+
+        clients.forEach(client => {
+            if (client.url && "navigate" in client) {
+                client.navigate(client.url);
+            } else {
+                console.warn("Skipping client without navigation support:", client);
+            }
+        });
     }
 });
+
+
