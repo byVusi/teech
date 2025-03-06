@@ -23,7 +23,6 @@ if ('serviceWorker' in navigator) {
 
 import {createNewElement  } from './assets/js/builders/createNewElement.js';
 import {createButton} from './assets/js/builders/components/Buttons.js';
-import { Validator } from './assets/js/classes/Validator.js';
 
 // Show a notification when a new update is available
 function showUpdateNotification(worker) {
@@ -53,7 +52,7 @@ function showUpdateNotification(worker) {
                         align-items: center;
                         justify-content: space-between;
                         position: absolute;
-                        bottom: 0.625em;
+                        bottom: 1em;
                         left: 50%;
                         transform: translateX(-50%);
                         padding: 1em;
@@ -69,16 +68,10 @@ function showUpdateNotification(worker) {
         if(window.matchMedia('(prefers-color-scheme: light)').matches) {
             banner.style.backgroundColor = `var(--dark)`;
             banner.style.color = `var(--light)`;
-
-            console.log('Light theme');
-
             button.classList.add('btn', 'btn-outline-light');
         } else {
             banner.style.backgroundColor = `var(--light)`;
             banner.style.color = `var(--dark)`;
-
-            console.log('Dark theme');
-
             button.classList.add('btn', 'btn-outline-dark');
         }
 
