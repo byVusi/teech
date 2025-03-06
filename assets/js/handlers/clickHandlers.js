@@ -12,7 +12,7 @@ export function navigationClick() {
 
 function navigationClickHandler(e){
     const clickedElement = e.target.closest('.nav-item');
-    const page = clickedElement.querySelector('span').innerHTML.toLowerCase().trim();
+    const page = clickedElement.querySelector('span').textContent.toLowerCase().trim();
     if(clickedElement) setNavItemStyling(page);
     document.querySelector('#page-name').textContent = page.charAt(0).toUpperCase() + page.slice(1).toLowerCase();
 }
