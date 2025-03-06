@@ -4,7 +4,7 @@
   
     /* Paragraph & body text */
     --p-size: clamp(1rem, 2vw, 1.125rem);
-    --small-text-size: clamp(0.875rem, 1.5vw, 1rem);
+    --small-text-size: clamp(0.75rem, 1.5vw, 1rem);
 }
   
 body {
