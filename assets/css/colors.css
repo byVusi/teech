@@ -15,8 +15,8 @@
     --secondary-200: hsl(216, 10%, 88%);
     --secondary-300: hsl(216, 10%, 70%);
     --secondary-400: hsl(216, 10%, 53%);
-    --secondary-500: #5c6470;
-    --secondary-600: #505762;
+    --secondary-500: hsl(216, 10%, 40%);
+    --secondary-600: hsl(217, 10%, 35%);
     --secondary-700: hsl(216, 10%, 25%);
     --secondary-800: hsl(216, 10%, 15%);
     --secondary-900: hsl(216, 10%, 5%);
