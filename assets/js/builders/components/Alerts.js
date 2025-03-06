@@ -3,15 +3,15 @@ import { createNewElement } from "../createNewElement.js";
 
 export function createAlert(header='', body='', type = 'info') {
     // Create the alert element
-    const alert = createNewElement(
-        'div', 
-    );
+    const alert = createNewElement('div', {attributes: {class: 'alert'}});
 
     const allowedTypes = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
 
+    const validatedType = allowedTypes.includes(type.toLowerCase().trim()) ? type.toLowerCase().trim() : 'info';
+
     // Check for a valid type
-    if(Validator.isNonEmptyString(type) && allowedTypes.includes(type.toLowerCase().trim())) {
-        alert.classList.add('alert', `alert-${type.toLowerCase().trim()}`);
+    if(Validator.isNonEmptyString(validatedType)) {
+        alert.classList.add(`alert-${validatedType}`);
     }
 
     // Check for a valid header
@@ -35,25 +35,15 @@ export function createAlertHeader(text = 'Alert Header', icon = {}, options = {}
     }
 
     const header = createNewElement('h4', {text: text, ...options});
-
     header.classList.add('alert-header');
 
     // Check for valid icon object
     if(!Validator.isNonEmptyObject(icon) || !Validator.isNonEmptyString(icon.name)) return header;
 
-
     const iconText = Validator.validateString(icon.name);
     if(!iconText) return header;
 
-    const iconElement = createNewElement(
-        'i',        
-        {
-            text: iconText,
-            attributes: {
-                class: icon.class || 'material-icons'
-            }
-        }
-    );
+    const iconElement = createNewElement('i', { text: iconText, attributes: { class: icon.class || 'material-icons' }});
 
     // Check for a valid icon size
     if(Validator.isNonEmptyString(icon.size)) {
