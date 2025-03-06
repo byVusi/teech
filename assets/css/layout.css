@@ -1,7 +1,8 @@
 body,
 header,
 #user-profile,
-footer {
+nav,
+.nav-item {
     display: flex;
 }
 
@@ -37,6 +38,9 @@ main {
 }
 
 nav {
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    gap: 1em;
     background-color: var(--secondary-800);
     border-top-width: 0.0625rem;
     border-top-style: solid;
@@ -58,4 +62,15 @@ nav {
     height: 2.5rem;
     background-color: var(--secondary-700);
     border-radius: 50%;
+}
+
+.nav-item  {
+    flex-direction: column;
+    align-items: center;
+    color: var(--secondary-400);
+    cursor: pointer;
+}
+
+.active {
+    color: var(--primary-400);
 }
