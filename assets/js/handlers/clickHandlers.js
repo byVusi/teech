@@ -10,11 +10,9 @@ export function navigationClick() {
     document.querySelector('nav').addEventListener('click', navigationClickHandler);
 }
 
-export function navigationClickHandler(e){
+function navigationClickHandler(e){
     const clickedElement = e.target.closest('.nav-item');
-
     const page = clickedElement.querySelector('span').innerHTML.toLowerCase().trim();
-
     if(clickedElement) controlNavigationItemsState(page)
 }
 
@@ -29,8 +27,8 @@ export function controlNavigationItemsState(page = 'home'){
     if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
         navIcons.forEach((icon, i)=>{
             icon.src = `${iconPathName}/${icons[i]}-secondary-400.png`;
+            navItems[i].classList.remove('active');
 
-            navItems[i].classList.remove('active')
             // Style the active page nav item
             if(icons[i] === page) {
                 icon.src = `${iconPathName}/${icons[i]}-primary-400-active.png`;
@@ -40,14 +38,13 @@ export function controlNavigationItemsState(page = 'home'){
     } else {
         navIcons.forEach((icon, i)=>{
             icon.src = `${iconPathName}/${icons[i]}-secondary-500.png`;
-
-            navItems[i].classList.remove('active')
+            navItems[i].classList.remove('active');
+            
             // Style the active page nav item
             if(icons[i] === page) {
                 icon.src = `${iconPathName}/${icons[i]}-primary-500-active.png`;
                 navItems[i].classList.add('active');
             }
         });
-
     }
 }
