@@ -80,3 +80,9 @@ function showUpdateNotification(worker) {
         return banner;
     }
 }
+
+import { controlNavigationItemsState, navigationClick } from './assets/js/handlers/clickHandlers.js';
+
+controlNavigationItemsState();
+navigationClick();
+

@@ -37,3 +37,7 @@ p {
 .small-text {
   font-size: var(--small-text-size);
 }
+
+.nav-item .small-text {
+  margin-top: 0.25rem;
+}
