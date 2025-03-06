@@ -12,11 +12,12 @@ export function navigationClick() {
 
 function navigationClickHandler(e){
     const clickedElement = e.target.closest('.nav-item');
-    const page = clickedElement.querySelector('span').innerHTML.toLowerCase().trim();
-    if(clickedElement) controlNavigationItemsState(page)
+    const page = clickedElement.querySelector('span').textContent.toLowerCase().trim();
+    if(clickedElement) setNavItemStyling(page);
+    document.querySelector('#page-name').textContent = page.charAt(0).toUpperCase() + page.slice(1).toLowerCase();
 }
 
-export function controlNavigationItemsState(page = 'home'){
+export function setNavItemStyling(page = 'home'){
     const iconPathName = './assets/media/icons';
 
     const navItems = document.querySelectorAll('.nav-item');
@@ -39,7 +40,7 @@ export function controlNavigationItemsState(page = 'home'){
         navIcons.forEach((icon, i)=>{
             icon.src = `${iconPathName}/${icons[i]}-secondary-500.png`;
             navItems[i].classList.remove('active');
-            
+
             // Style the active page nav item
             if(icons[i] === page) {
                 icon.src = `${iconPathName}/${icons[i]}-primary-500-active.png`;
