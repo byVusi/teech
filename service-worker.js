@@ -13,7 +13,24 @@ self.addEventListener('install', event => {
         'index.html',
         'main.css',
         'main.js',
-        'assets/media/icons/favicon/favicon.ico'
+        'assets/media/icons/favicon/favicon.ico',
+        'assets/media/icons/home-primary-400-active.png',
+        'assets/media/icons/home-primary-500-active.png',
+        'assets/media/icons/home-secondary-400.png',
+        'assets/media/icons/home-secondary-500.png',
+        'assets/media/icons/classes-primary-400-active.png',
+        'assets/media/icons/classes-primary-500-active.png',
+        'assets/media/icons/classes-secondary-400.png',
+        'assets/media/icons/classes-secondary-500.png',
+        'assets/media/icons/students-primary-400-active.png',
+        'assets/media/icons/students-primary-500-active.png',
+        'assets/media/icons/students-secondary-400.png',
+        'assets/media/icons/students-secondary-500.png',
+        'assets/media/icons/summary-primary-400-active.png',
+        'assets/media/icons/summary-primary-500-active.png',
+        'assets/media/icons/summary-secondary-400.png',
+        'assets/media/icons/summary-secondary-500.png',
+        
     ].map(path => basePath + path); // Prepend base path to each asset
 
     event.waitUntil(
