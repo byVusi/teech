@@ -81,8 +81,8 @@ function showUpdateNotification(worker) {
     }
 }
 
-import { controlNavigationItemsState, navigationClick } from './assets/js/handlers/clickHandlers.js';
+import { setNavItemStyling, navigationClick } from './assets/js/handlers/clickHandlers.js';
 
-controlNavigationItemsState();
+setNavItemStyling();
 navigationClick();
 
