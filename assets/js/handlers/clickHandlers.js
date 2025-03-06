@@ -1,3 +1,4 @@
+import { capitilizeString } from "../utils/formatting.js";
 
 export function handleModalCloseClick() {
     document.querySelector('.modal').remove();
@@ -14,7 +15,8 @@ function navigationClickHandler(e){
     const clickedElement = e.target.closest('.nav-item');
     const page = clickedElement.querySelector('span').textContent.toLowerCase().trim();
     if(clickedElement) setNavItemStyling(page);
-    document.querySelector('#page-name').textContent = page.charAt(0).toUpperCase() + page.slice(1).toLowerCase();
+    document.querySelector('title').textContent = `Teech | ${capitilizeString(page)}`
+    document.querySelector('#page-name').textContent = capitilizeString(page);
 }
 
 export function setNavItemStyling(page = 'home'){
