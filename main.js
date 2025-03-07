@@ -46,7 +46,7 @@ function showUpdateNotification(worker) {
                 text: validatedText,
                 attributes: {
                     style: `
-                        width: 100%;
+                        width: calc(100% - 1em);
                         max-width: 30em;
                         display: inline-flex;
                         gap: 1em;
