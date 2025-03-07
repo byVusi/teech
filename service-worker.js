@@ -1,5 +1,5 @@
 // Define cache names
-const CACHE_NAME = 'pwa-cache-v1'; // Updated cache name to trigger updates
+const CACHE_NAME = 'pwa-cache-v2'; // Updated cache name to trigger updates
 const API_CACHE = 'api-cache-v1';
 
 self.addEventListener('install', event => {
@@ -7,7 +7,7 @@ self.addEventListener('install', event => {
     const scope = self.registration.scope;
     const basePath = new URL(scope).pathname; // This will be '/teech/' on GitHub Pages
 
-    // Define static assets (avoid modifying global STATIC_ASSETS)
+    // Define static assets
     const staticAssets = [
         '',
         'index.html',
