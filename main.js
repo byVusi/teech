@@ -82,20 +82,6 @@ function showUpdateNotification(worker) {
     }
 }
 
-function setManifest(theme) {
-    let manifestLink = document.querySelector('link[rel="manifest"]');
-    if(!manifestLink) {
-        manifestLink = document.createElement('link');
-        manifestLink.rel = 'manifest';
-        document.head.append.append(manifestLink);
-    }
-
-    manifestLink.href = theme === 'dark' ? '/manifest-dark.json' : '/manifest-light.json';
-}
-
-// Set up application
-const userPreferedTheme = window.matchMedia('(prefers-color-scheme: light)').matches;
-setManifest(userPreferedTheme ? 'light' : 'dark');
 setNavItemStyling();
 navigationClick();
 
