@@ -66,6 +66,6 @@
     --info-900: hsl(200, 80%, 5%);
 
     /* Light and Dark */
-    --light: hsl(216, 10%, 96%);
+    --light: hsl(210, 10%, 96%);
     --dark: hsl(216, 10%, 10%);
 }
