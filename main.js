@@ -23,6 +23,7 @@ if ('serviceWorker' in navigator) {
 
 import {createNewElement  } from './assets/js/builders/createNewElement.js';
 import {createButton} from './assets/js/builders/components/Buttons.js';
+import { setNavItemStyling, navigationClick } from './assets/js/handlers/clickHandlers.js';
 
 // Show a notification when a new update is available
 function showUpdateNotification(worker) {
@@ -81,8 +82,20 @@ function showUpdateNotification(worker) {
     }
 }
 
-import { setNavItemStyling, navigationClick } from './assets/js/handlers/clickHandlers.js';
+function setManifest(theme) {
+    let manifestLink = document.querySelector('link[rel="manifest"]');
+    if(!manifestLink) {
+        manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        document.head.append.append(manifestLink);
+    }
 
+    manifestLink.href = theme === 'dark' ? '/manifest-dark.json' : '/manifest-light.json';
+}
+
+// Set up application
+const userPreferedTheme = window.matchMedia('(prefers-color-scheme: light)').matches;
+setManifest(userPreferedTheme ? 'light' : 'dark');
 setNavItemStyling();
 navigationClick();
 
