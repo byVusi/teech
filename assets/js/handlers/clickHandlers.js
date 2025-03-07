@@ -14,7 +14,9 @@ export function navigationClick() {
 function navigationClickHandler(e){
     const clickedElement = e.target.closest('.nav-item');
     const page = clickedElement.querySelector('span').textContent.toLowerCase().trim();
-    if(clickedElement) setNavItemStyling(page);    
+    if(clickedElement) setNavItemStyling(page);
+    document.querySelector('title').textContent = `Teech | ${capitilizeString(page)}`
+    document.querySelector('#page-name').textContent = capitilizeString(page);
 }
 
 export function setNavItemStyling(page = 'home'){
