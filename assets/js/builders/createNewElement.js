@@ -8,11 +8,11 @@ import { Validator } from "../classes/Validator.js";
  *   - {string} [options.text] - The text content to be set for the element.
  *   - {Object} [options.attributes] - An object containing key-value pairs for the attributes to be set on the element.
  *   - {Object} [options.events] - An object where the keys are event types (e.g., 'click', 'mouseover') and the values are event handler functions.
- * 
+ *
  * @returns {HTMLElement} The created HTML element with the applied options.
- * 
+ *
  * @throws {TypeError} If the tagName is not a non-empty string or is not a valid HTML tag name.
- * 
+ *
  * @example
  * const button = createNewElement('button', {
  *   text: 'Click me',
@@ -22,37 +22,43 @@ import { Validator } from "../classes/Validator.js";
  * document.body.appendChild(button);
  */
 export function createNewElement(tagName, options = {}) {
-    if(!Validator.isNonEmptyString(tagName)) {
-        throw new TypeError('Invalid tagName. Must be a non-empty string.');
-    } 
-    
-    if(!Validator.isValidHTMLElement(tagName.toLowerCase().trim())) throw new TypeError('Invalid tagName. Must be a valid HTML tag name.');
+	if (!Validator.isNonEmptyString(tagName)) {
+		throw new TypeError("Invalid tagName. Must be a non-empty string.");
+	}
 
-    const element = document.createElement(tagName);
+	if (!Validator.isValidHtmlTagName(tagName.toLowerCase().trim()))
+		throw new TypeError("Invalid tagName. Must be a valid HTML tag name.");
 
-    // If no options are provided, return the element
-    if(!Validator.isNonEmptyObject(options)) return element;
+	const element = document.createElement(tagName);
 
-    // Set the text content if valid
-    if(Validator.isNonEmptyString(options.text)) element.textContent = options.text;
+	// If no options are provided, return the element
+	if (!Validator.isNonEmptyObject(options)) return element;
 
-    // Set attributes
-    if(Validator.isNonEmptyObject(options.attributes)) {
-        Object.entries(options.attributes).forEach(([key, value]) => {
-            if(Validator.isNonEmptyString(key)) element.setAttribute(key, value);    
-         })
-    }
+	// Set the text content if valid
+	if (Validator.isNonEmptyString(options.text))
+		element.textContent = options.text;
 
-    // Add event listeners
-    if(Validator.isNonEmptyObject(options.events)) {
-        Object.entries(options.events).forEach(([event, handler]) => {         
-            if(Validator.isNonEmptyString(event) && Validator.isValidFunction(handler)) {
-                element.addEventListener(event, handler);
-            } else {
-                console.error(`Event listener for "${event}" is invalid.`)
-            }
-        })
-    }
+	// Set attributes
+	if (Validator.isNonEmptyObject(options.attributes)) {
+		Object.entries(options.attributes).forEach(([key, value]) => {
+			if (Validator.isNonEmptyString(key))
+				element.setAttribute(key, value);
+		});
+	}
 
-    return element;
+	// Add event listeners
+	if (Validator.isNonEmptyObject(options.events)) {
+		Object.entries(options.events).forEach(([event, handler]) => {
+			if (
+				Validator.isNonEmptyString(event) &&
+				Validator.isValidFunction(handler)
+			) {
+				element.addEventListener(event, handler);
+			} else {
+				console.error(`Event listener for "${event}" is invalid.`);
+			}
+		});
+	}
+
+	return element;
 }
