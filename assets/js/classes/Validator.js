@@ -1,5 +1,4 @@
 export class Validator {
-	// List of valid HTML tags
 	static HTML_TAGS = [
 		"a",
 		"abbr",
