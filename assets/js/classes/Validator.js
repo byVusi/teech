@@ -289,6 +289,12 @@ export class Validator {
 		return this.isValidNumber(value) && value !== 0;
 	}
 
+	static isArrayOfObjects(value) {
+		return (
+			this.isNonEmptyArray(value) && value.every(Validator.isValidObject)
+		);
+	}
+
 	/**
 	 * Validates that the value is a non-empty string.
 	 * @param {*} value - The value to validate.
