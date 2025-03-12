@@ -4,6 +4,10 @@ import { classrooms } from "./classrooms.js";
 import { Validator } from "../classes/Validator.js";
 import { formatDate } from "../utils/formatting.js";
 
+/**
+ * Sets up classrooms from localStorage.
+ * @returns {Classroom[]} Array of Classroom instances.
+ */
 export function setupClassroomsFromLocalStorage() {
 	try {
 		const serialisedData = localStorage.getItem("classrooms");
@@ -29,6 +33,11 @@ export function setupClassroomsFromLocalStorage() {
 	}
 }
 
+/**
+ * Creates Classroom instances from raw data.
+ * @param {Object[]} rawData - Array of raw classroom data.
+ * @returns {Classroom[]} Array of Classroom instances.
+ */
 function createClassrooms(rawData) {
 	return rawData.map((classroomData) => {
 		const className = classroomData.className || "Unnamed Class";
@@ -51,6 +60,10 @@ function createClassrooms(rawData) {
 	});
 }
 
+/**
+ * Saves classrooms to localStorage.
+ * @param {Classroom[]} classes - Array of Classroom instances.
+ */
 export function saveClassroomsToLocalStorage(classes) {
 	const plainObjects = classes.map((c) => ({
 		className: c.className,
@@ -67,6 +80,12 @@ export function saveClassroomsToLocalStorage(classes) {
 	localStorage.setItem("classrooms", JSON.stringify(plainObjects));
 }
 
+/**
+ * Adds a new classroom.
+ * @param {string} className - Name of the classroom.
+ * @param {string} subject - Subject of the classroom.
+ * @returns {string} Status of the operation.
+ */
 export function addNewClassroom(className, subject) {
 	const validatedClassName =
 		Validator.validateString(className) || "Unnamed Class";
@@ -102,6 +121,15 @@ export function addNewClassroom(className, subject) {
 	return "success";
 }
 
+/**
+ * Adds a new student to a classroom.
+ * @param {string} uniqueId - Unique ID of the student.
+ * @param {string} firstName - First name of the student.
+ * @param {string} lastName - Last name of the student.
+ * @param {Date} dateOfBirth - Date of birth of the student.
+ * @param {string} className - Name of the classroom.
+ * @returns {string} Status of the operation.
+ */
 export function addNewStudent(
 	uniqueId,
 	firstName,
@@ -163,6 +191,11 @@ export function addNewStudent(
 	return "success";
 }
 
+/**
+ * Deletes a student from classrooms.
+ * @param {Classroom[]} classes - Array of Classroom instances.
+ * @param {string} studentId - Unique ID of the student to be deleted.
+ */
 export function deleteStudent(classes, studentId) {
 	const updatedClassrooms = classes.map((cls) => ({
 		...cls,
@@ -172,6 +205,10 @@ export function deleteStudent(classes, studentId) {
 	localStorage.setItem("classrooms", JSON.stringify(updatedClassrooms));
 }
 
+/**
+ * Gets students whose birthday is today.
+ * @returns {Student[]} Array of students whose birthday is today.
+ */
 export function getBirthdayStudents() {
 	const classes = setupClassroomsFromLocalStorage();
 	const students = classes.flatMap((cls) => cls?.students);
@@ -184,6 +221,10 @@ export function getBirthdayStudents() {
 	return [];
 }
 
+/**
+ * Gets classroom data from localStorage.
+ * @returns {Object[]} Array of classroom data.
+ */
 export function getClassroomData() {
 	const classes = JSON.parse(localStorage.getItem("classrooms"));
 
