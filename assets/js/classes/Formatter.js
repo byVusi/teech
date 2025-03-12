@@ -1,6 +1,11 @@
 import { Validator } from "./Validator.js";
 
 export class Formatter {
+	/**
+	 * Capitalizes the first letter of a non-empty string.
+	 * @param {string} value - The string to capitalize.
+	 * @returns {string|undefined} The capitalized string or undefined if the input is invalid.
+	 */
 	static capitalize(value) {
 		if (!Validator.isNonEmptyString(value.trim())) {
 			console.error(
@@ -13,6 +18,11 @@ export class Formatter {
 		);
 	}
 
+	/**
+	 * Formats a valid date string into a more readable format.
+	 * @param {string} value - The date string to format.
+	 * @returns {string|undefined} The formatted date string or undefined if the input is invalid.
+	 */
 	static formalDate(value) {
 		if (!Validator.isValidDate(value)) {
 			console.error("Invalid date. Value must be a valid date string.");
