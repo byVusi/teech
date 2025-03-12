@@ -95,6 +95,6 @@ function showUpdateNotification(worker) {
 	}
 }
 
-configureAppUser(new User("mathonsi", "Vusumuzi", "Mathonsi", "1990-09-29"));
+configureAppUser(new User("mathonsi", "Vusi", "Mathonsi", "1990-09-29"));
 setNavItemStyling();
 navigationClick();
