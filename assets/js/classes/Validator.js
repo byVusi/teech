@@ -347,7 +347,7 @@ export class Validator {
 	 */
 	static validateDate(value) {
 		if (!this.isValidDate(value)) {
-			throw new TypeError("Invalid date. Must be a valid date.");
+			throw new TypeError("Invalid date. Must be a valid date string.");
 		}
 		return new Date(value);
 	}

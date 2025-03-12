@@ -19,10 +19,11 @@ export class Formatter {
 			return;
 		}
 
-		const monthIndex = value.getMonth();
+		const validatedDate = Validator.validateDate(value);
+		const monthIndex = validatedDate.getMonth();
 		const month = Validator.MONTHS_OF_THE_YEAR[monthIndex];
-		const date = value.getDate();
-		const year = value.getFullYear();
+		const date = validatedDate.getDate();
+		const year = validatedDate.getFullYear();
 
 		return `${month} ${date}, ${year}`;
 	}
