@@ -19,4 +19,19 @@ export function returnElementFromDOM(elementSelector, message) {
 	return element;
 }
 
-// Add insertContainerInDOM
+export function insertContainerInDOM(
+	parentElementSelector,
+	childElementSelector,
+	buildFunction
+) {
+	const parentElement = returnElementFromDOM(
+		Validator.validateString(parentElementSelector),
+		`function: insertContainerInDom. Element '${parentElementSelector}' does not exist.`
+	);
+
+	const childElement = buildFunction(
+		Validator.validateString(childElementSelector)
+	);
+
+	parentElement.append(childElement);
+}

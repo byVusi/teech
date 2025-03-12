@@ -1,9 +1,8 @@
 import { renderFilterSelect } from "../render/renderInput.js";
-import { /*insertPageName,*/ insertContainer } from "../utils/utilities.js";
 import { buildContainer } from "../builders/components/Containers.js";
 import { renderEmptyStudentList } from "../render/renderLists.js";
 import { Validator } from "../classes/Validator.js";
-import { returnElementFromDOM } from "../utils/dom.js";
+import { returnElementFromDOM, insertContainerInDOM } from "../utils/dom.js";
 
 /**
  * Initialises and renders the students page.
@@ -15,7 +14,7 @@ export function runStudentsPage(pageName = "students") {
 	const validatedPageName = Validator.validateString(pageName);
 
 	// insertPageName(validatedPageName);
-	insertContainer(".main-container", buildContainer("list-container"));
+	insertContainerInDOM(".main-container", "list-container", buildContainer);
 	renderFilterSelect("container", "Select an option"); // Deal with event listener at the build stage
 
 	const formSelect = returnElementFromDOM(

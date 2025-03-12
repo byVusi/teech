@@ -1,5 +1,5 @@
-import { /*insertPageName*/ insertContainer } from "../utils/utilities.js";
 import { buildContainer } from "../builders/components/Containers.js";
+import { insertContainerInDOM } from "../utils/dom.js";
 
 /**
  * Initialises and renders the summary page.
@@ -9,6 +9,10 @@ import { buildContainer } from "../builders/components/Containers.js";
 export function runSummaryPage(pageName = "summary") {
 	// const validatedPageName = Validator.validateString(pageName);
 	// insertPageName(validatedPageName);
-	insertContainer(".main-container", buildContainer("summary-container"));
+	insertContainerInDOM(
+		".main-container",
+		"summary-container",
+		buildContainer
+	);
 	// renderFloatingButton(validatedPageName);
 }
