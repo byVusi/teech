@@ -12,13 +12,10 @@ import { isElementInDOM, insertContainerInDOM } from "../utils/dom.js";
  */
 export function runStudentsPage(pageName = "students") {
 	const validatedPageName = Validator.validateString(pageName);
-
-	// insertPageName(validatedPageName);
 	insertContainerInDOM(".main-container", "list-container", buildContainer);
-	// renderFilterSelect("container", "Select an option"); // Deal with event listener at the build stage
 
 	if (isElementInDOM(".form-select")) {
-		// Do stuff
+		renderFilterSelect("container", "Select an option"); // Deal with event listener at the build stage
 	}
 
 	// const formSelect = document.querySelector(".form-select");

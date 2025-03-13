@@ -10,14 +10,7 @@ import { isElementInDOM, insertContainerInDOM } from "../utils/dom.js";
  */
 export function runClassesPage(pageName = "classes") {
 	const validatedPageName = Validator.validateString(pageName);
-
-	if (isElementInDOM(".main-container")) {
-		insertContainerInDOM(
-			".main-container",
-			"card-container",
-			buildContainer
-		);
-	}
+	insertContainerInDOM(".main-container", "card-container", buildContainer);
 
 	// insertPageName(validatedPageName);
 
