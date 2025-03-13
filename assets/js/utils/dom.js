@@ -1,22 +1,29 @@
 import { Validator } from "../classes/Validator.js";
 
-export function returnElementFromDOM(elementSelector, message) {
-	if (!Validator.isValidString(elementSelector)) {
-		throw new Error(
-			"function: checkElement. Element does not exist in DOM."
-		);
-	}
-
-	const element = document.querySelector(elementSelector);
-
-	if (!element) {
-		console.error(
-			Validator.validateString(message) || "Element not found."
-		);
+export function returnElementFromDOM(elementSelector) {
+	if (!isElementInDOM(elementSelector)) {
+		console.error("Cannot return a non-existant element.");
 		return;
 	}
 
+	const element = document.querySelector(elementSelector);
 	return element;
+}
+
+export function isElementInDOM(elementSelector) {
+	if (!Validator.isValidString(elementSelector)) {
+		console.error(
+			"function: isElementInDOM. Element does not exist in DOM."
+		);
+		return false;
+	}
+
+	if (document.querySelector(elementSelector)) {
+		console.error(`Element '${elementSelector}' not found.`);
+		return false;
+	}
+
+	return true;
 }
 
 export function insertContainerInDOM(

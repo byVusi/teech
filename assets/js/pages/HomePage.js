@@ -1,16 +1,21 @@
 // import { renderClassCards } from "../render/renderCards.js";
 import { buildContainer } from "../builders/components/Containers.js";
 import { Validator } from "../classes/Validator.js";
-import { isElementInDOM, insertContainerInDOM } from "../utils/dom.js";
+import {
+	returnElementFromDOM,
+	insertContainerInDOM,
+	isElementInDOM,
+} from "../utils/dom.js";
 
 /**
  * Initialises and renders the classes page.
  * Sets up the page name, container, cards, and floating button, and attaches event listeners.
  * @param {string} pageName - The name of the page to be displayed.
  */
-export function runClassesPage(pageName = "classes") {
+export function runHomePage(pageName = "home") {
 	const validatedPageName = Validator.validateString(pageName);
 
+	// Complete rendering of home page if .main-container exists in DOM
 	if (isElementInDOM(".main-container")) {
 		insertContainerInDOM(
 			".main-container",
