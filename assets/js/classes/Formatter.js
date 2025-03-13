@@ -37,4 +37,13 @@ export class Formatter {
 
 		return `${month} ${date}, ${year}`;
 	}
+
+	static formatDate(value) {
+		const validatedDate = Validator.validateDate(value);
+		const formattedDate = validatedDate.toLocaleDateString("en-GB", {
+			year: "numeric", // e.g. '2025'
+			month: "long", // e.g. 'Februray'
+			day: "numeric", // e.g. '9'
+		});
+	}
 }

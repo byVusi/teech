@@ -1,11 +1,11 @@
 @font-face {
 	font-family: Inter;
-	src: url(../fonts/Inter/Inter-VariableFont_opsz\wght.ttf);
+	src: url(../fonts/Inter/Inter-VariableFont_opsz,wght.ttf);
 }
 
 @font-face {
 	font-family: "Open Sans";
-	src: url(../fonts/Open_Sans/OpenSans-VariableFont_wdth\wght.ttf);
+	src: url(../fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf);
 }
 
 :root {

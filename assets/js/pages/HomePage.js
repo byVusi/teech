@@ -8,13 +8,13 @@ import { returnElementFromDOM, insertContainerInDOM } from "../utils/dom.js";
  * Sets up the page name, container, cards, and floating button, and attaches event listeners.
  * @param {string} pageName - The name of the page to be displayed.
  */
-export function runClassesPage(pageName = "classes") {
+export function runHomePage(pageName = "home") {
 	const validatedPageName = Validator.validateString(pageName);
 
 	// Return the main container if found || log error if not found
 	const mainContainer = returnElementFromDOM(
 		".main-container",
-		"function: runClassesPage. Main container not found."
+		"function: runHomePage. Main container not found."
 	);
 
 	// insertPageName(validatedPageName);
