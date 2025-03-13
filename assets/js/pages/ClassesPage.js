@@ -1,7 +1,7 @@
 // import { renderClassCards } from "../render/renderCards.js";
 import { buildContainer } from "../builders/components/Containers.js";
 import { Validator } from "../classes/Validator.js";
-import { returnElementFromDOM, insertContainerInDOM } from "../utils/dom.js";
+import { isElementInDOM, insertContainerInDOM } from "../utils/dom.js";
 
 /**
  * Initialises and renders the classes page.
@@ -11,14 +11,16 @@ import { returnElementFromDOM, insertContainerInDOM } from "../utils/dom.js";
 export function runClassesPage(pageName = "classes") {
 	const validatedPageName = Validator.validateString(pageName);
 
-	// Return the main container if found || log error if not found
-	const mainContainer = returnElementFromDOM(
-		".main-container",
-		"function: runClassesPage. Main container not found."
-	);
+	if (isElementInDOM(".main-container")) {
+		insertContainerInDOM(
+			".main-container",
+			"card-container",
+			buildContainer
+		);
+	}
 
 	// insertPageName(validatedPageName);
-	insertContainerInDOM(".main-container", "card-container", buildContainer);
+
 	// renderClassCards(); // Deal with event listener at the card build
 
 	// Ensure class cards are rendered before attaching event listeners
