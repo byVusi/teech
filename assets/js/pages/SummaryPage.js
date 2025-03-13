@@ -7,8 +7,7 @@ import { insertContainerInDOM } from "../utils/dom.js";
  * @param {string} pageName - The name of the page to be displayed.
  */
 export function runSummaryPage(pageName = "summary") {
-	// const validatedPageName = Validator.validateString(pageName);
-	// insertPageName(validatedPageName);
+	const validatedPageName = Validator.validateString(pageName);
 	insertContainerInDOM(
 		".main-container",
 		"summary-container",
