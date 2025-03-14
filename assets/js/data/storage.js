@@ -1,8 +1,8 @@
-import { Classroom } from "../classes/Classroom";
+import { Classroom } from "../classes/Classroom.js";
 import { Student } from "../classes/Student.js";
 import { classrooms } from "./classrooms.js";
 import { Validator } from "../classes/Validator.js";
-import { formatDate } from "../utils/formatting.js";
+import { Formatter } from "../classes/Formatter.js";
 
 /**
  * Sets up classrooms from localStorage.
@@ -213,7 +213,9 @@ export function getBirthdayStudents() {
 	const classes = setupClassroomsFromLocalStorage();
 	const students = classes.flatMap((cls) => cls?.students);
 	const birthdayStudents = students.filter(
-		(stu) => formatDate(stu?.dateOfBirth) === formatDate(new Date())
+		(stu) =>
+			Formatter.formatDate(stu?.dateOfBirth) ===
+			Formatter.formatDate(new Date())
 	);
 
 	if (Validator.isNonEmptyArray(birthdayStudents)) return birthdayStudents;
