@@ -1,7 +1,8 @@
 // import { renderClassCards } from "../render/renderCards.js";
 import { buildContainer } from "../builders/components/Containers.js";
 import { Validator } from "../classes/Validator.js";
-import { isElementInDOM, insertContainerInDOM } from "../utils/dom.js";
+import { insertContainerInDOM } from "../utils/dom.js";
+import { renderClassCards } from "../renderers/renderCards.js";
 
 /**
  * Initialises and renders the classes page.
@@ -14,7 +15,7 @@ export function runClassesPage(pageName = "classes") {
 
 	// insertPageName(validatedPageName);
 
-	// renderClassCards(); // Deal with event listener at the card build
+	renderClassCards(); // Deal with event listener at the card build
 
 	// Ensure class cards are rendered before attaching event listeners
 	// const renderedCards = mainContainer.querySelectorAll(".card");

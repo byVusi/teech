@@ -13,7 +13,7 @@ export function isElementInDOM(elementSelector) {
 		return false;
 	}
 
-	if (document.querySelector(elementSelector)) {
+	if (!document.querySelector(elementSelector)) {
 		console.error(`Element '${elementSelector}' not found.`);
 		return false;
 	}
@@ -51,6 +51,8 @@ export function insertContainerInDOM(
 		Validator.validateString(parentElementSelector),
 		`function: insertContainerInDom. Element '${parentElementSelector}' does not exist.`
 	);
+
+	parentElement.replaceChildren();
 
 	const childElement = buildFunction(
 		Validator.validateString(childElementSelector)
