@@ -4,7 +4,7 @@ import { runHomePage } from "../pages/HomePage.js";
 import { runClassesPage } from "../pages/ClassesPage.js";
 import { runStudentsPage } from "../pages/StudentsPage.js";
 import { runSummaryPage } from "../pages/SummaryPage.js";
-import { isElementInDOM } from "../utils/dom.js";
+import { isElementInDOM, returnElementFromDOM } from "../utils/dom.js";
 
 // Object that holds page renderer for each page: 'home', 'classes', 'students' and 'summary'
 const runPages = {
@@ -32,25 +32,20 @@ export function navigationClick() {
 function navigationClickHandler(e) {
 	const clickedElement = e.target.closest(".nav-item");
 
-	// Get page name from clicked .nav-item
 	const page = clickedElement
 		.querySelector("span")
 		?.textContent.toLowerCase()
 		.trim();
 
-	// Style navigation based on page name from clicked .nav-item
 	if (clickedElement) setNavItemStyling(page);
 
-	// Change document title
 	document.querySelector(
 		"title"
 	).textContent = `Teech | ${Formatter.capitalize(page)}`;
 
-	// Change page title in the header
 	document.querySelector("#page-name").textContent =
 		Formatter.capitalize(page);
 
-	// Render page if .main-container is in the DOM
 	if (isElementInDOM(".main-container")) {
 		Object.keys(runPages).forEach((pageName) => {
 			if (pageName === page) {
