@@ -75,10 +75,6 @@ nav {
 	cursor: pointer;
 }
 
-.placeholder-text {
-	text-align: center;
-}
-
 @media (prefers-color-scheme: light) {
 	nav {
 		background-color: var(--light);
