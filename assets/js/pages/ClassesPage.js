@@ -12,9 +12,6 @@ import { renderClassCards } from "../renderers/renderCards.js";
 export function runClassesPage(pageName = "classes") {
 	const validatedPageName = Validator.validateString(pageName);
 	insertContainerInDOM(".main-container", "card-container", buildContainer);
-
-	// insertPageName(validatedPageName);
-
 	renderClassCards(); // Deal with event listener at the card build
 
 	// Ensure class cards are rendered before attaching event listeners

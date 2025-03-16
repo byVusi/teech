@@ -32,6 +32,8 @@ export function navigationClick() {
 function navigationClickHandler(e) {
 	const clickedElement = e.target.closest(".nav-item");
 
+	if (!clickedElement) return;
+
 	const page = clickedElement
 		.querySelector("span")
 		?.textContent.toLowerCase()
