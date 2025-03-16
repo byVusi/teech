@@ -4,7 +4,7 @@ import { runHomePage } from "../pages/HomePage.js";
 import { runClassesPage } from "../pages/ClassesPage.js";
 import { runStudentsPage } from "../pages/StudentsPage.js";
 import { runSummaryPage } from "../pages/SummaryPage.js";
-import { isElementInDOM, returnElementFromDOM } from "../utils/dom.js";
+import { isElementInDOM } from "../utils/dom.js";
 
 // Object that holds page renderer for each page: 'home', 'classes', 'students' and 'summary'
 const runPages = {
