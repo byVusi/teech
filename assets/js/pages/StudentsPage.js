@@ -15,14 +15,6 @@ export function runStudentsPage(pageName = "students") {
 	insertContainerInDOM(".main-container", "list-container", buildContainer);
 	renderFilterSelect(".main-container"); // Deal with event listener at the build stage
 
-	// const formSelect = document.querySelector(".form-select");
-	// if (!formSelect) {
-	// 	console.error(
-	// 		"function: runStudentsPage. Form select element not found."
-	// 	);
-	// 	return;
-	// }
-
 	// renderEmptyStudentList();
 	// renderFloatingButton(validatedPageName);
 	// handleSelectChange();
